@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UsuarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +18,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('tablero', function(){
-    return view('test');
-})->middleware(['auth'])->name('tablero');
+// Route::get('tablero', function(){
+//     return view('test');
+// })->middleware(['auth'])->name('tablero');
+
+
+Route::get('tablero', [UsuarioController::class, 'index'])->middleware(['auth']);
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
